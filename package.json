@@ -9,6 +9,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "hex-rgb": "^5.0.0"
+    "hex-rgb": "^5.0.0",
+    "procreate-swatches": "^0.1.1"
   }
 }
