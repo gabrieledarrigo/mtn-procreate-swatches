@@ -2,6 +2,9 @@
   "name": "mtn",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "rm -f data/swatches/* && bun index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
