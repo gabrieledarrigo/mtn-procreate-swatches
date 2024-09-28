@@ -4,6 +4,8 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "allowJs": false,
     "moduleResolution": "nodenext",
     "verbatimModuleSyntax": true,
