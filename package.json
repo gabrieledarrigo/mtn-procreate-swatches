@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "rm -f data/swatches/* && bun src/index.ts"
+    "create-swatches": "rm -f data/swatches/* && bun src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
