@@ -1,37 +1,11 @@
 import fs from "fs/promises";
-import hexRgb from "hex-rgb";
 import { createSwatchesFile } from "procreate-swatches";
+import { type Swatch, Color } from "./models/Color.ts";
 
 export type RawColor = {
   name: string;
   hex: string;
 };
-
-export type Swatch = [
-  [red: number, green: number, blue: number],
-  format: "rgb"
-];
-
-export class Color {
-  private constructor(
-    public readonly name: string,
-    public readonly hex: string,
-    public readonly rgb: [
-      red: number,
-      green: number,
-      blue: number,
-      alpha: number
-    ]
-  ) {}
-
-  public static from(name: string, hex: string): Color {
-    return new Color(name, hex, hexRgb(hex, { format: "array" }));
-  }
-
-  public toSwatch(): Swatch {
-    return [[this.rgb[0], this.rgb[1], this.rgb[2]], "rgb"];
-  }
-}
 
 export class Palette {
   private constructor(
