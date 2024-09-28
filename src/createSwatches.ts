@@ -8,6 +8,12 @@ export type RawColor = {
   hex: string;
 };
 
+/**
+ * Reads a JSON file containing color information and returns an array of Color objects.
+ *
+ * @param from - The file path to the JSON file containing the color data.
+ * @returns A promise that resolves to an array of Color objects.
+ */
 export async function getColors(from: string): Promise<Color[]> {
   return fs
     .readFile(from, "utf-8")
@@ -15,6 +21,14 @@ export async function getColors(from: string): Promise<Color[]> {
     .then((colors) => colors.map((color) => Color.from(color.name, color.hex)));
 }
 
+/**
+ * Creates multiple palettes from a given list of colors.
+ *
+ * @param colors - An array of `Color` objects to be divided into palettes.
+ * @param paletteName - The base name for each palette.
+ * @param perPalette - The number of colors per palette.
+ * @returns A promise that resolves to an array of `Palette` objects.
+ */
 export async function createPalettes(
   colors: Color[],
   paletteName: string,
@@ -40,6 +54,13 @@ export async function createPalettes(
   return palettes;
 }
 
+/**
+ * Creates swatches files for a given list of palettes and writes them to the specified directory.
+ *
+ * @param palettes - An array of Palette objects
+ * @param to - The directory path where the swatches files will be written.
+ * @returns A promise that resolves when all swatches files have been created and written.
+ */
 export async function createSwatches(
   palettes: Palette[],
   to: string
