@@ -17,6 +17,7 @@ export async function getColors(from: string): Promise<Color[]> {
 
 export async function createPalettes(
   colors: Color[],
+  paletteName: string,
   perPalette: number
 ): Promise<Palette[]> {
   const swatches = Math.ceil(colors.length / perPalette);
@@ -30,7 +31,7 @@ export async function createPalettes(
     const swatch = colors.slice(i * perPalette, i * perPalette + perPalette);
     palettes.push(
       Palette.from(
-        `MTN Hardcore ${i + 1}`,
+        `${paletteName} ${i + 1}`,
         swatch.map((color) => color.toSwatch())
       )
     );

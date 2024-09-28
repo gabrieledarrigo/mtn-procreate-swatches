@@ -41,7 +41,8 @@ describe("createPalettes", () => {
       Color.from("Blue", "#0000FF"),
     ];
 
-    const palettes = await createPalettes(colors, 2);
+    const paletteName = "MTN Hardcore";
+    const palettes = await createPalettes(colors, paletteName, 2);
 
     expect(palettes[0].name).toBe("MTN Hardcore 1");
     expect(palettes[0].swatches).toEqual([
