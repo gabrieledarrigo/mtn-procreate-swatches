@@ -1,4 +1,6 @@
 [
+  { "name": "Matt White", "hex": "#FFFFFF" },
+  { "name": "Gloss Black", "hex": "#000000" },
   { "name": "Unicorn Yellow", "hex": "#FFFFBF" },
   { "name": "Beach Yellow", "hex": "#FFF386" },
   { "name": "RV-7", "hex": "#fff7b6" },
@@ -131,11 +133,5 @@
   { "name": "Pearl Grey", "hex": "#7B7C7E" },
   { "name": "Dark Grey", "hex": "#616264" },
   { "name": "Sputnik Grey", "hex": "#575757" },
-  { "name": "Anthracite Grey", "hex": "#464648" },
-  { "name": "Divinity White", "hex": "#FFFFFF" },
-  { "name": "Satin White", "hex": "#FFFFFF" },
-  { "name": "Matt White", "hex": "#FFFFFF" },
-  { "name": "Satin Black", "hex": "#000000" },
-  { "name": "Matt Black", "hex": "#000000" },
-  { "name": "Gloss Black", "hex": "#000000" }
+  { "name": "Anthracite Grey", "hex": "#464648" }
 ]
