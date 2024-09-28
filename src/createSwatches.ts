@@ -8,9 +8,9 @@ export type RawColor = {
   hex: string;
 };
 
-export async function getColors(): Promise<Color[]> {
+export async function getColors(from: string): Promise<Color[]> {
   return fs
-    .readFile("data/colors.json", "utf-8")
+    .readFile(from, "utf-8")
     .then((json) => JSON.parse(json) as RawColor[])
     .then((colors) => colors.map((color) => Color.from(color.name, color.hex)));
 }
@@ -39,14 +39,17 @@ export async function createPalettes(
   return palettes;
 }
 
-export async function createSwatches(palettes: Palette[]): Promise<void> {
+export async function createSwatches(
+  palettes: Palette[],
+  to: string
+): Promise<void> {
   for (const palette of palettes) {
-    console.log(`Creating swatches file for ${palette.name}`);
+    console.log(`Creating swatches file for ${palette.name} in ${to}`);
 
     const swatchesFile = await createSwatchesFile(
       palette.name,
       palette.swatches
     );
-    await fs.writeFile(`data/swatches/${palette.name}.swatches`, swatchesFile);
+    await fs.writeFile(`${to}/${palette.name}.swatches`, swatchesFile);
   }
 }

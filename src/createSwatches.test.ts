@@ -7,10 +7,11 @@ import { Palette } from "./models/Palette.ts";
 
 describe("getColors", () => {
   beforeEach(() => {
-    spyOn(console, "log").mockReturnValue(undefined);
+    // spyOn(console, "log").mockReturnValue(undefined);
   });
 
   it("should read colors from the JSON file and return an array of Color instances", async () => {
+    const from = "data/colors.json";
     const colors = [
       { name: "Red", hex: "#FF0000" },
       { name: "Green", hex: "#00FF00" },
@@ -19,9 +20,9 @@ describe("getColors", () => {
 
     spyOn(fs, "readFile").mockResolvedValue(JSON.stringify(colors));
 
-    const actual = await getColors();
+    const actual = await getColors(from);
 
-    expect(fs.readFile).toHaveBeenCalledWith("data/colors.json", "utf-8");
+    expect(fs.readFile).toHaveBeenCalledWith(from, "utf-8");
 
     expect(actual[0].name).toBe("Red");
     expect(actual[0].hex).toBe("#FF0000");
@@ -53,7 +54,7 @@ describe("createPalettes", () => {
 });
 
 describe("createSwatches", () => {
-  it("should create swatches files for the given colors", async () => {
+  it("should create swatches files for the given palette in the given folder", async () => {
     const colors = [
       Color.from("Red", "#FF0000"),
       Color.from("Green", "#00FF00"),
@@ -67,16 +68,18 @@ describe("createSwatches", () => {
       ),
     ];
 
+    const to = "data/swatches";
+
     spyOn(procreate, "createSwatchesFile").mockResolvedValue(
-      JSON.stringify(colors)
+      JSON.stringify(palettes)
     );
     spyOn(fs, "writeFile").mockResolvedValue(undefined);
 
-    await createSwatches(palettes);
+    await createSwatches(palettes, to);
 
     expect(fs.writeFile).toHaveBeenCalledWith(
-      "data/swatches/MTN Hardcore 1.swatches",
-      JSON.stringify(colors)
+      `${to}/${palettes[0].name}.swatches`,
+      JSON.stringify(palettes)
     );
   });
 });
