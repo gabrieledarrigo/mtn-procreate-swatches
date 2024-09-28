@@ -17,21 +17,21 @@ export async function getColors(): Promise<Color[]> {
 
 export async function createPalettes(
   colors: Color[],
-  perChunk: number
+  perPalette: number
 ): Promise<Palette[]> {
-  const chunks = Math.ceil(colors.length / perChunk);
+  const swatches = Math.ceil(colors.length / perPalette);
   const palettes: Palette[] = [];
 
   console.log(
-    `There are ${colors.length} colors in total. There are ${chunks} chunks of 30 colors each.`
+    `There are ${colors.length} colors in total. There are ${swatches} swatches of ${perPalette} colors each.`
   );
 
-  for (let i = 0; i < chunks; i++) {
-    const chunk = colors.slice(i * perChunk, i * perChunk + perChunk);
+  for (let i = 0; i < swatches; i++) {
+    const swatch = colors.slice(i * perPalette, i * perPalette + perPalette);
     palettes.push(
       Palette.from(
         `MTN Hardcore ${i + 1}`,
-        chunk.map((color) => color.toSwatch())
+        swatch.map((color) => color.toSwatch())
       )
     );
   }
